@@ -5,7 +5,8 @@ con dos mercados: **Miami, FL** y **Las Vegas, NV**. Especificación completa de
 Mapa de carpetas: `docs/MAPA.md` (leer antes de explorar).
 
 ## Estado actual (v1 — vista previa)
-- **Sitio principal: VPS de Soleil** → https://jd.66-179-137-11.sslip.io (dominio temporal gratis de sslip.io, con HTTPS).
+- **Sitio principal: https://jdfixing.com** (y www), en el VPS de Soleil, con HTTPS.
+  Dirección alterna que sigue funcionando: https://jd.66-179-137-11.sslip.io.
   Se publica con `npm run deploy` (ver "Servidor" abajo). **No** se publica solo al hacer push.
 - Copia de respaldo en GitHub Pages: https://leodanmendez113.github.io/jd-service/ (se publica sola con cada push a `main`).
 - Modo **preview** activo: barra amarilla arriba, etiquetas "Sample" en fotos/testimonios y `noindex` (Google no indexa).
@@ -18,7 +19,8 @@ Mapa de carpetas: `docs/MAPA.md` (leer antes de explorar).
 - Subida: usuario `jddeploy` (sin sudo, solo escribe en su carpeta) con la clave `~/.ssh/jd-service-deploy-ed25519`.
 - Tareas de administrador (nginx, certbot): usuario `soleildeploy` con `~/.ssh/soleil-vps-deploy-ed25519`
   (esa clave se llama "temporary"; si deja de funcionar, la publicación sigue andando con jddeploy).
-- Certificado de Let's Encrypt `jd.66-179-137-11.sslip.io`: se renueva solo (certbot.timer).
+- Certificado de Let's Encrypt (nombre `jd.66-179-137-11.sslip.io`) cubre sslip.io, `jdfixing.com` y `www.jdfixing.com`;
+  se renueva solo (certbot.timer). Copia de la config nginx: `docs/servidor/zz-jd-service.conf`.
 - Cualquier cambio en nginx: `sudo nginx -t` antes de `sudo systemctl reload nginx`, y comprobar
   learnwithsoleil.com antes y después.
 - **Deshacer todo:** `sudo rm /etc/nginx/sites-enabled/zz-jd-service && sudo nginx -t && sudo systemctl reload nginx`.
@@ -49,16 +51,15 @@ Mapa de carpetas: `docs/MAPA.md` (leer antes de explorar).
   servidor + correo + base de datos.
 - Fotos provisionales de Unsplash (enlazadas, no descargadas). Logo provisional en SVG (`logoMark` en `src/icons.js`).
 
-## Al pasar al dominio definitivo
-1. DNS del dominio: registro **A** `@` → `66.179.137.11` y **A** `www` → `66.179.137.11`; borrar los A de
-   "estacionado"; sin AAAA (el VPS no tiene IPv6); si es Cloudflare, "DNS only" hasta tener el certificado.
-2. En el servidor: agregar el dominio y `www` al `server_name` de `zz-jd-service`, y luego
-   `sudo certbot --nginx -d dominio.com -d www.dominio.com`.
-3. En `scripts/deploy.sh`: cambiar `SITE_URL` por el dominio y `PREVIEW` a `false` (cuando haya fotos y testimonios reales).
-4. Poner `SITE.email`, conectar Google Analytics / Search Console / Business Profile.
+## Dominio jdfixing.com (conectado 2026-11-14)
+- Comprado en **Hostinger**; DNS en Hostinger (nameservers `*.dns-parking.com`): **A** `@` → `66.179.137.11`,
+  **CNAME** `www` → `jdfixing.com`. Sin AAAA (el VPS no tiene IPv6). No tocar MX/TXT (serán del correo).
+- `scripts/deploy.sh` publica con `SITE_URL=https://jdfixing.com` (canonical, sitemap y hreflang usan ese dominio).
+- Falta: `PREVIEW=false` en `deploy.sh` cuando haya fotos y testimonios reales; poner `SITE.email`;
+  conectar Google Analytics / Search Console / Business Profile.
 
 ## Pendientes (del cliente)
-- Dominio y correo corporativo (info@, estimates@, projects@).
+- Correo corporativo (info@, estimates@, projects@) en jdfixing.com.
 - Logo original en buena calidad para redibujarlo (y las versiones horizontal/vertical/redes).
 - Fotos y videos reales de proyectos, y pares reales de antes/después.
 - Testimonios reales (los actuales son de muestra).

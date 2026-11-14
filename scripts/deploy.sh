@@ -6,8 +6,8 @@ set -euo pipefail
 SERVER="jddeploy@66.179.137.11"
 REMOTE_DIR="/var/www/jd-service/"
 KEY="$HOME/.ssh/jd-service-deploy-ed25519"
-# Dominio temporal (sslip.io apunta a la IP del servidor). Cambiar cuando tengamos el dominio real.
-export SITE_URL="${SITE_URL:-https://jd.66-179-137-11.sslip.io}"
+# Dominio real (comprado en Hostinger). jd.66-179-137-11.sslip.io sigue funcionando como dirección alterna.
+export SITE_URL="${SITE_URL:-https://jdfixing.com}"
 export BASE="/"
 export PREVIEW="${PREVIEW:-true}"
 
