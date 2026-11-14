@@ -5,14 +5,28 @@ con dos mercados: **Miami, FL** y **Las Vegas, NV**. Especificación completa de
 Mapa de carpetas: `docs/MAPA.md` (leer antes de explorar).
 
 ## Estado actual (v1 — vista previa)
-- Publicado en GitHub Pages: https://leodanmendez113.github.io/jd-service/ (repo `leodanmendez113/jd-service`).
-- Cada `git push` a `main` vuelve a publicar solo (GitHub Actions, `.github/workflows/deploy.yml`).
-- Hosting definitivo: **pendiente**, Leo lo decide después.
+- **Sitio principal: VPS de Soleil** → https://jd.66-179-137-11.sslip.io (dominio temporal gratis de sslip.io, con HTTPS).
+  Se publica con `npm run deploy` (ver "Servidor" abajo). **No** se publica solo al hacer push.
+- Copia de respaldo en GitHub Pages: https://leodanmendez113.github.io/jd-service/ (se publica sola con cada push a `main`).
 - Modo **preview** activo: barra amarilla arriba, etiquetas "Sample" en fotos/testimonios y `noindex` (Google no indexa).
+
+## Servidor (VPS de Soleil — 66.179.137.11, Ubuntu 24.04, nginx + certbot)
+- **El servidor es compartido con learnwithsoleil.com (otro cliente). Nunca tocar nada de Soleil**:
+  ni `/etc/nginx/sites-available/soleil`, ni su certificado, ni su app (puerto 3000).
+- JD vive aparte: archivos en `/var/www/jd-service`, config nginx en `/etc/nginx/sites-available/zz-jd-service`
+  (el "zz" hace que Soleil siga siendo el sitio por defecto para visitas por IP).
+- Subida: usuario `jddeploy` (sin sudo, solo escribe en su carpeta) con la clave `~/.ssh/jd-service-deploy-ed25519`.
+- Tareas de administrador (nginx, certbot): usuario `soleildeploy` con `~/.ssh/soleil-vps-deploy-ed25519`
+  (esa clave se llama "temporary"; si deja de funcionar, la publicación sigue andando con jddeploy).
+- Certificado de Let's Encrypt `jd.66-179-137-11.sslip.io`: se renueva solo (certbot.timer).
+- Cualquier cambio en nginx: `sudo nginx -t` antes de `sudo systemctl reload nginx`, y comprobar
+  learnwithsoleil.com antes y después.
+- **Deshacer todo:** `sudo rm /etc/nginx/sites-enabled/zz-jd-service && sudo nginx -t && sudo systemctl reload nginx`.
 
 ## Cómo se trabaja
 - `npm run dev` → construye y sirve en http://localhost:4321/jd-service/
 - `npm run build` → genera `dist/` (no se sube a git; lo genera GitHub Actions).
+- `npm run deploy` → construye para la raíz del dominio y sube al VPS (`scripts/deploy.sh`; solo sube lo que cambió).
 - Sin dependencias: solo Node. El generador es `build.mjs`; las páginas se arman con funciones JS en `src/`.
 - Animaciones: GSAP 3.12.5 + ScrollTrigger (cdnjs) y Lenis 1.1.13 (unpkg), cargados por CDN en `src/layout.js`.
   Si no cargan o el usuario tiene "reducir movimiento", el sitio funciona igual sin animaciones.
@@ -36,9 +50,12 @@ Mapa de carpetas: `docs/MAPA.md` (leer antes de explorar).
 - Fotos provisionales de Unsplash (enlazadas, no descargadas). Logo provisional en SVG (`logoMark` en `src/icons.js`).
 
 ## Al pasar al dominio definitivo
-1. `BASE=/ SITE_URL=https://dominio.com PREVIEW=false node build.mjs` (o cambiar los valores en `src/config.js`).
-2. Reemplazar fotos y testimonios de muestra por reales; quitar `preview`.
-3. Poner `SITE.email`, conectar Google Analytics / Search Console / Business Profile.
+1. DNS del dominio: registro **A** `@` → `66.179.137.11` y **A** `www` → `66.179.137.11`; borrar los A de
+   "estacionado"; sin AAAA (el VPS no tiene IPv6); si es Cloudflare, "DNS only" hasta tener el certificado.
+2. En el servidor: agregar el dominio y `www` al `server_name` de `zz-jd-service`, y luego
+   `sudo certbot --nginx -d dominio.com -d www.dominio.com`.
+3. En `scripts/deploy.sh`: cambiar `SITE_URL` por el dominio y `PREVIEW` a `false` (cuando haya fotos y testimonios reales).
+4. Poner `SITE.email`, conectar Google Analytics / Search Console / Business Profile.
 
 ## Pendientes (del cliente)
 - Dominio y correo corporativo (info@, estimates@, projects@).

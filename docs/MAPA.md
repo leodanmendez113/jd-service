@@ -21,9 +21,11 @@ jd-service/
 │   ├── css/pages.css          Estilos de páginas internas y formulario
 │   ├── js/main.js             Menú, filtros, antes/después, formulario → WhatsApp, animaciones de scroll
 │   └── img/favicon.svg
-├── .github/workflows/deploy.yml   Publica en GitHub Pages en cada push a main
+├── scripts/deploy.sh          npm run deploy: construye y sube el sitio al VPS de Soleil con rsync
+├── .github/workflows/deploy.yml   Publica la copia de respaldo en GitHub Pages en cada push a main
 ├── .claude/launch.json        Servidor de vista previa para Claude
 └── docs/
+    ├── servidor/zz-jd-service.conf  Copia de la config de nginx del VPS (solo referencia)
     ├── ESPECIFICACION.md      Lo que pidió el cliente
     └── MAPA.md                Este archivo
 ```
