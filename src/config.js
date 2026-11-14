@@ -11,7 +11,7 @@ export const SITE = {
   name: 'JD Service and Fixing Corp.',
   shortName: "JD'S Service & Fixing",
   email: null, // pendiente: info@[dominio]
-  whatsapp: '13056137449', // pendiente de confirmar con el cliente qué número usa WhatsApp
+  whatsapp: '17252358655', // mismo número que el teléfono (confirmado por el cliente 2026-11-14)
   address: {
     street: '11610 SW 191st St',
     city: 'Miami',
@@ -19,10 +19,8 @@ export const SITE = {
     zip: '33157',
     country: 'US',
   },
-  phones: {
-    miami: { display: '305-613-7449', tel: '+13056137449' },
-    vegas: { display: '725-235-8655', tel: '+17252358655' },
-  },
+  // Un solo número para todo el sitio (llamadas y WhatsApp), para Miami y Las Vegas.
+  phone: { display: '725-235-8655', tel: '+17252358655' },
 };
 
 // Idiomas: el inglés vive en la raíz y el español en /es/.

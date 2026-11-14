@@ -140,7 +140,6 @@
 .area-body { position: absolute; left: 0; right: 0; bottom: 0; padding: clamp(24px, 3vw, 40px); }
 .area h3 { font-family: var(--display); font-size: clamp(40px, 5vw, 72px); text-transform: uppercase; margin-bottom: 10px; }
 .area p { color: rgba(255, 255, 255, .82); max-width: 42ch; }
-.area-phone { display: inline-flex; gap: 8px; align-items: center; font-weight: 700; color: var(--gold); }
 .area-go { position: absolute; right: clamp(24px, 3vw, 40px); bottom: clamp(24px, 3vw, 40px); width: 58px; height: 58px; border-radius: 50%; background: var(--gold); color: var(--ink); display: grid; place-items: center; transition: transform .4s var(--ease); }
 .area:hover .area-go { transform: rotate(45deg); }
 
@@ -159,7 +158,6 @@
 .cta-in { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
 .cta-in p { font-size: 19px; font-weight: 600; margin: 14px 0 0; }
 .cta-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-.cta-band .call-pop { left: auto; right: 0; }
 
 @media (max-width: 1000px) {
   .intro-grid, .process-grid { grid-template-columns: 1fr; }
@@ -171,7 +169,7 @@
 }
 @media (max-width: 768px) {
   .hero-scroll { display: none; }
-  .hero-ctas .btn, .hero-ctas .call-menu, .hero-ctas .call-menu summary { width: 100%; }
+  .hero-ctas .btn { width: 100%; }
   .hs-head { display: block; }
   /* En móvil los servicios se deslizan con el dedo */
   .hs-viewport { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
@@ -184,5 +182,5 @@
   .feat-grid { grid-template-columns: 1fr; }
   .feat-grid .proj:nth-child(n) { grid-column: span 1; }
   .ba-stage { aspect-ratio: 4 / 3; }
-  .cta-btns, .cta-btns .btn, .cta-btns .call-menu, .cta-btns .call-menu summary { width: 100%; }
+  .cta-btns, .cta-btns .btn { width: 100%; }
 }

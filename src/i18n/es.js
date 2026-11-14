@@ -27,8 +27,6 @@ export default {
   common: {
     skip: 'Ir al contenido',
     preview: 'Versión de vista previa — las fotos y los testimonios son de muestra y se reemplazarán por proyectos reales.',
-    callMiami: 'Llamar a Miami',
-    callVegas: 'Llamar a Las Vegas',
     whatsapp: 'WhatsApp',
     learnMore: 'Ver más',
     viewAll: 'Ver todos los proyectos',
@@ -55,7 +53,7 @@ export default {
     services: ['Servicios de remodelación | Cocinas, baños, pisos y más', 'Remodelación de cocinas y baños, instalación de pisos, iluminación LED, remodelación interior y exterior y mejoras generales de propiedades.'],
     projects: ['Nuestros proyectos | Galería de remodelaciones', 'Vea cocinas, baños, pisos, pérgolas, iluminación LED y remodelaciones exteriores realizadas por JD Service and Fixing Corp.'],
     beforeAfter: ['Antes y Después | Transformaciones de remodelación', 'Vea la diferencia que hace una remodelación profesional. Fotos de antes y después de cocinas, interiores y más.'],
-    miami: ['Remodelación de casas en Miami, FL | Cocinas, baños y pérgolas', 'Remodelación de cocinas y baños, instalación de pisos, pérgolas y mejoras de propiedades en Miami, FL. Llame al 305-613-7449.'],
+    miami: ['Remodelación de casas en Miami, FL | Cocinas, baños y pérgolas', 'Remodelación de cocinas y baños, instalación de pisos, pérgolas y mejoras de propiedades en Miami, FL. Llame al 725-235-8655.'],
     vegas: ['Remodelación de casas en Las Vegas, NV | Cocinas, baños y exteriores', 'Remodelación de cocinas y baños, instalación de pisos y remodelación exterior en Las Vegas, NV. Llame al 725-235-8655.'],
     estimate: ['Solicite un presupuesto gratis | JD Service and Fixing Corp.', 'Cuéntenos sobre su proyecto de remodelación en Miami o Las Vegas y reciba un presupuesto gratis de nuestro equipo.'],
     contact: ['Contacto | JD Service and Fixing Corp.', 'Llame a nuestro equipo de Miami o Las Vegas, escríbanos por WhatsApp o solicite un presupuesto de remodelación en línea.'],
@@ -267,7 +265,7 @@ export default {
     kicker: 'Presupuesto gratis',
     title: 'Solicitar presupuesto',
     sub: 'Cuéntenos sobre su proyecto y nuestro equipo le responderá a la brevedad.',
-    side: '¿Prefiere hablar? Llame al equipo de su zona o escríbanos por WhatsApp.',
+    side: '¿Prefiere hablar? Llámenos o escríbanos por WhatsApp.',
     fields: {
       name: 'Nombre y apellido',
       phone: 'Teléfono',
@@ -304,7 +302,7 @@ export default {
   contact: {
     kicker: 'Contacto',
     title: 'Hablemos de su proyecto.',
-    sub: 'Llame al equipo de su zona, escríbanos por WhatsApp o solicite un presupuesto en línea.',
+    sub: 'Llámenos, escríbanos por WhatsApp o solicite un presupuesto en línea.',
     miamiTitle: 'Miami, Florida',
     vegasTitle: 'Las Vegas, Nevada',
     vegasAddress: 'Servicio en todo el valle de Las Vegas',

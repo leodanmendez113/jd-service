@@ -31,7 +31,7 @@ function jsonLd(lang, key) {
     ...base,
     '@id': SITE.url + '/miami-fl/#business',
     url: SITE.url + '/miami-fl/',
-    telephone: SITE.phones.miami.tel,
+    telephone: SITE.phone.tel,
     address: { '@type': 'PostalAddress', streetAddress: SITE.address.street, addressLocality: SITE.address.city, addressRegion: SITE.address.region, postalCode: SITE.address.zip, addressCountry: SITE.address.country },
     areaServed: { '@type': 'City', name: 'Miami' },
   };
@@ -40,7 +40,7 @@ function jsonLd(lang, key) {
     ...base,
     '@id': SITE.url + '/las-vegas-nv/#business',
     url: SITE.url + '/las-vegas-nv/',
-    telephone: SITE.phones.vegas.tel,
+    telephone: SITE.phone.tel,
     areaServed: { '@type': 'City', name: 'Las Vegas' },
   };
   const graph = key === 'miami' ? [miami] : key === 'vegas' ? [vegas] : key === 'home' ? [miami, vegas] : [];
@@ -126,26 +126,15 @@ ${SITE.preview ? `<div class="preview-bar">${L.common.preview}</div>` : ''}
   </nav>
   <div class="mm-foot">
     <a class="btn btn-gold" href="${href(L.lang, 'estimate')}">${n.estimate}</a>
-    <a class="mm-phone" href="tel:${SITE.phones.miami.tel}">${icon('phone')} <span>${L.common.miami}</span> ${SITE.phones.miami.display}</a>
-    <a class="mm-phone" href="tel:${SITE.phones.vegas.tel}">${icon('phone')} <span>${L.common.vegas}</span> ${SITE.phones.vegas.display}</a>
+    <a class="mm-phone" href="tel:${SITE.phone.tel}">${icon('phone')} <span>${L.common.phone}</span> ${SITE.phone.display}</a>
     <a class="mm-lang" href="${langHref}" hreflang="${other(L.lang)}" data-lang="${other(L.lang)}">${L.switchLabel}</a>
   </div>
 </div>`;
 }
 
-// Botón "Call Now" con los dos números (o uno solo si estamos en la página de un mercado).
-export function callButton(L, market, cls = 'btn btn-ghost') {
-  if (market) {
-    const ph = SITE.phones[market];
-    return `<a class="${cls}" href="tel:${ph.tel}">${icon('phone')} ${L.nav.call} · ${ph.display}</a>`;
-  }
-  return `<details class="call-menu">
-    <summary class="${cls}">${icon('phone')} ${L.nav.call}</summary>
-    <div class="call-pop">
-      <a href="tel:${SITE.phones.miami.tel}"><small>${L.common.miami}</small>${SITE.phones.miami.display}</a>
-      <a href="tel:${SITE.phones.vegas.tel}"><small>${L.common.vegas}</small>${SITE.phones.vegas.display}</a>
-    </div>
-  </details>`;
+// Botón "Call Now" con el número único del sitio.
+export function callButton(L, cls = 'btn btn-ghost') {
+  return `<a class="${cls}" href="tel:${SITE.phone.tel}">${icon('phone')} ${L.nav.call} · ${SITE.phone.display}</a>`;
 }
 
 function footer(L) {
@@ -169,9 +158,8 @@ function footer(L) {
     </div>
     <div class="f-contact">
       <h3>${f.contact}</h3>
-      <a href="tel:${SITE.phones.miami.tel}">${icon('phone')} <span><small>${L.common.miami}</small>${SITE.phones.miami.display}</span></a>
-      <a href="tel:${SITE.phones.vegas.tel}">${icon('phone')} <span><small>${L.common.vegas}</small>${SITE.phones.vegas.display}</span></a>
-      <a href="${waLink()}" target="_blank" rel="noopener">${icon('chat')} <span>WhatsApp</span></a>
+      <a href="tel:${SITE.phone.tel}">${icon('phone')} <span><small>${L.common.phone}</small>${SITE.phone.display}</span></a>
+      <a href="${waLink()}" target="_blank" rel="noopener">${icon('chat')} <span><small>WhatsApp</small>${SITE.phone.display}</span></a>
       <p>${icon('pin')} <span>${SITE.address.street}<br>${SITE.address.city}, ${SITE.address.region} ${SITE.address.zip}</span></p>
       ${contactLine}
     </div>
@@ -182,8 +170,7 @@ function footer(L) {
   </div>
 </footer>
 <div class="contact-bar" aria-label="Quick contact">
-  <a href="tel:${SITE.phones.miami.tel}">${icon('phone')}<span>Miami</span></a>
-  <a href="tel:${SITE.phones.vegas.tel}">${icon('phone')}<span>Las Vegas</span></a>
+  <a href="tel:${SITE.phone.tel}">${icon('phone')}<span>${L.nav.call}</span></a>
   <a href="${waLink()}" target="_blank" rel="noopener">${icon('chat')}<span>WhatsApp</span></a>
   <a class="cb-gold" href="${href(L.lang, 'estimate')}">${icon('clipboard')}<span>${L.nav.estimateBar}</span></a>
 </div>

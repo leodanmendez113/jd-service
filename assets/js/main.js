@@ -39,7 +39,6 @@
     b.setAttribute('aria-expanded', li.classList.contains('open'));
   }));
   document.addEventListener('click', (e) => {
-    $$('.call-menu[open]').forEach((d) => { if (!d.contains(e.target)) d.open = false; });
     $$('.has-sub.open').forEach((li) => { if (!li.contains(e.target)) li.classList.remove('open'); });
   });
 

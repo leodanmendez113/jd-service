@@ -27,8 +27,6 @@ export default {
   common: {
     skip: 'Skip to content',
     preview: 'Preview version — photos and testimonials are samples and will be replaced with real projects.',
-    callMiami: 'Call Miami',
-    callVegas: 'Call Las Vegas',
     whatsapp: 'WhatsApp',
     learnMore: 'Learn more',
     viewAll: 'View all projects',
@@ -55,7 +53,7 @@ export default {
     services: ['Remodeling Services | Kitchens, Baths, Flooring & More', 'Kitchen and bathroom remodeling, flooring installation, LED lighting, interior and outdoor remodeling and general property improvements.'],
     projects: ['Our Projects | Remodeling Gallery', 'Browse kitchens, bathrooms, flooring, pergolas, LED lighting and outdoor remodeling projects by JD Service and Fixing Corp.'],
     beforeAfter: ['Before & After | Remodeling Transformations', 'See the difference a professional remodel makes. Before and after photos of kitchens, interiors and more.'],
-    miami: ['Home Remodeling Miami, FL | Kitchens, Baths & Pergolas', 'Kitchen remodeling, bathroom remodeling, flooring installation, pergola installation and property improvements in Miami, FL. Call 305-613-7449.'],
+    miami: ['Home Remodeling Miami, FL | Kitchens, Baths & Pergolas', 'Kitchen remodeling, bathroom remodeling, flooring installation, pergola installation and property improvements in Miami, FL. Call 725-235-8655.'],
     vegas: ['Home Remodeling Las Vegas, NV | Kitchens, Baths & Outdoor', 'Kitchen remodeling, bathroom remodeling, flooring installation and outdoor remodeling in Las Vegas, NV. Call 725-235-8655.'],
     estimate: ['Request a Free Estimate | JD Service and Fixing Corp.', 'Tell us about your remodeling project in Miami or Las Vegas and get a free estimate from our team.'],
     contact: ['Contact Us | JD Service and Fixing Corp.', 'Call our Miami or Las Vegas team, message us on WhatsApp or request a free remodeling estimate online.'],
@@ -267,7 +265,7 @@ export default {
     kicker: 'Free estimate',
     title: 'Request an Estimate',
     sub: 'Tell us about your project and our team will get back to you shortly.',
-    side: 'Prefer to talk? Call the team in your area or message us on WhatsApp.',
+    side: 'Prefer to talk? Call us or message us on WhatsApp.',
     fields: {
       name: 'First and Last Name',
       phone: 'Phone Number',
@@ -304,7 +302,7 @@ export default {
   contact: {
     kicker: 'Contact us',
     title: 'Let’s talk about your project.',
-    sub: 'Call the team in your area, send us a WhatsApp message or request an estimate online.',
+    sub: 'Call us, send us a WhatsApp message or request an estimate online.',
     miamiTitle: 'Miami, Florida',
     vegasTitle: 'Las Vegas, Nevada',
     vegasAddress: 'Serving the Las Vegas Valley',

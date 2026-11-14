@@ -49,6 +49,8 @@ Mapa de carpetas: `docs/MAPA.md` (leer antes de explorar).
 - El formulario de presupuesto (v1) valida los datos, detecta el mercado por ZIP (NV 889–898, FL 320–349) y abre
   **WhatsApp** con la solicitud ya escrita (las fotos se adjuntan en WhatsApp). En fase 2 se reemplaza por envío a
   servidor + correo + base de datos.
+- 2026-11-14: **un solo teléfono** para todo el sitio, llamadas y WhatsApp: 725-235-8655 (`SITE.phone` y
+  `SITE.whatsapp` en `src/config.js`). Ya no hay número separado por ciudad; el de Miami (305) se quitó.
 - Fotos provisionales de Unsplash (enlazadas, no descargadas). Logo provisional en SVG (`logoMark` en `src/icons.js`).
 
 ## Dominio jdfixing.com (conectado 2026-11-14)
@@ -63,7 +65,6 @@ Mapa de carpetas: `docs/MAPA.md` (leer antes de explorar).
 - Logo original en buena calidad para redibujarlo (y las versiones horizontal/vertical/redes).
 - Fotos y videos reales de proyectos, y pares reales de antes/después.
 - Testimonios reales (los actuales son de muestra).
-- Confirmar qué número usa WhatsApp (ahora: el de Miami).
 - Validar licencias (General Contractor, eléctrica) para Florida y Nevada.
 - Revisión legal de Privacy Policy y Terms.
 

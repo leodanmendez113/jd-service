@@ -6,7 +6,7 @@ import { icon } from './icons.js';
 import { href, waLink, esc } from './layout.js';
 import * as S from './sections.js';
 
-const contactEmail = (L) => SITE.email ?? `${SITE.phones.miami.display} (Miami) / ${SITE.phones.vegas.display} (Las Vegas)`;
+const contactEmail = (L) => SITE.email ?? SITE.phone.display;
 
 export const home = (L) =>
   [S.homeHero(L), S.marquee(L), S.intro(L), S.servicesScroll(L), S.featured(L), S.beforeAfter(L), S.why(L), S.process(L), S.areas(L), S.testimonials(L), S.ctaBand(L)].join('\n');
@@ -87,7 +87,6 @@ ${S.ctaBand(L)}`;
 
 export function market(L, m) {
   const t = L.markets[m];
-  const ph = SITE.phones[m];
   const otherM = m === 'miami' ? 'vegas' : 'miami';
   const projects = PROJECTS.filter((p) => p.market === m).slice(0, 4);
   const ba = BEFORE_AFTER.find((b) => b.market === m) ?? BEFORE_AFTER[0];
@@ -105,7 +104,7 @@ export function market(L, m) {
     </div>
     <aside class="contact-card" data-reveal>
       <h2 class="h3">${t.officeTitle}</h2>
-      <a class="cc-row" href="tel:${ph.tel}">${icon('phone')}<span><small>${L.common.phone}</small>${ph.display}</span></a>
+      <a class="cc-row" href="tel:${SITE.phone.tel}">${icon('phone')}<span><small>${L.common.phone}</small>${SITE.phone.display}</span></a>
       ${m === 'miami' ? `<p class="cc-row">${icon('pin')}<span><small>${L.common.address}</small>${SITE.address.street}<br>${SITE.address.city}, ${SITE.address.region} ${SITE.address.zip}</span></p>` : `<p class="cc-row">${icon('pin')}<span><small>${L.nav.areas}</small>${L.common.servingVegas}</span></p>`}
       <a class="btn btn-gold" href="${href(L.lang, 'estimate')}?market=${m}">${L.nav.estimate}</a>
       <a class="btn btn-outline-dark" href="${waLink()}" target="_blank" rel="noopener">${icon('chat')} WhatsApp</a>
@@ -171,8 +170,7 @@ export function estimate(L) {
     </div>
     <aside class="contact-card sticky">
       <p>${e.side}</p>
-      <a class="cc-row" href="tel:${SITE.phones.miami.tel}">${icon('phone')}<span><small>${L.common.miami}</small>${SITE.phones.miami.display}</span></a>
-      <a class="cc-row" href="tel:${SITE.phones.vegas.tel}">${icon('phone')}<span><small>${L.common.vegas}</small>${SITE.phones.vegas.display}</span></a>
+      <a class="cc-row" href="tel:${SITE.phone.tel}">${icon('phone')}<span><small>${L.common.phone}</small>${SITE.phone.display}</span></a>
       <a class="btn btn-outline-dark" href="${waLink()}" target="_blank" rel="noopener">${icon('chat')} WhatsApp</a>
     </aside>
   </div>
@@ -187,21 +185,20 @@ export function contact(L) {
   <div class="wrap contact-grid">
     <div class="contact-card" data-reveal>
       <h2 class="h3">${c.miamiTitle}</h2>
-      <a class="cc-row" href="tel:${SITE.phones.miami.tel}">${icon('phone')}<span><small>${L.common.phone}</small>${SITE.phones.miami.display}</span></a>
       <p class="cc-row">${icon('pin')}<span><small>${L.common.address}</small>${addr}</span></p>
-      <a class="btn btn-dark" href="tel:${SITE.phones.miami.tel}">${L.common.callMiami}</a>
+      <a class="btn btn-dark" href="${href(L.lang, 'estimate')}?market=miami">${L.nav.estimate}</a>
     </div>
     <div class="contact-card" data-reveal>
       <h2 class="h3">${c.vegasTitle}</h2>
-      <a class="cc-row" href="tel:${SITE.phones.vegas.tel}">${icon('phone')}<span><small>${L.common.phone}</small>${SITE.phones.vegas.display}</span></a>
       <p class="cc-row">${icon('pin')}<span><small>${L.nav.areas}</small>${c.vegasAddress}</span></p>
-      <a class="btn btn-dark" href="tel:${SITE.phones.vegas.tel}">${L.common.callVegas}</a>
+      <a class="btn btn-dark" href="${href(L.lang, 'estimate')}?market=vegas">${L.nav.estimate}</a>
     </div>
     <div class="contact-card gold" data-reveal>
-      <h2 class="h3">WhatsApp · ${L.common.email}</h2>
-      <a class="cc-row" href="${waLink()}" target="_blank" rel="noopener">${icon('chat')}<span><small>WhatsApp</small>${SITE.phones.miami.display}</span></a>
+      <h2 class="h3">${L.common.phone} · WhatsApp</h2>
+      <a class="cc-row" href="tel:${SITE.phone.tel}">${icon('phone')}<span><small>${L.common.phone}</small>${SITE.phone.display}</span></a>
+      <a class="cc-row" href="${waLink()}" target="_blank" rel="noopener">${icon('chat')}<span><small>WhatsApp</small>${SITE.phone.display}</span></a>
       <p class="cc-row">${icon('mail')}<span><small>${L.common.email}</small>${SITE.email ?? L.common.emailSoon}</span></p>
-      <a class="btn btn-dark" href="${href(L.lang, 'estimate')}">${L.nav.estimate}</a>
+      <a class="btn btn-dark" href="tel:${SITE.phone.tel}">${icon('phone')} ${L.nav.call}</a>
     </div>
   </div>
   <div class="wrap">

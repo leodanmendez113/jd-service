@@ -29,7 +29,7 @@ export function homeHero(L) {
     <p class="hero-text">${h.text}</p>
     <div class="hero-ctas">
       <a class="btn btn-gold btn-lg" href="${href(L.lang, 'estimate')}">${L.nav.estimate} ${icon('arrow')}</a>
-      ${callButton(L, null, 'btn btn-glass btn-lg')}
+      ${callButton(L, 'btn btn-glass btn-lg')}
     </div>
   </div>
   <div class="hero-scroll" aria-hidden="true"><span>${h.scroll}</span><i></i></div>
@@ -168,7 +168,6 @@ export function areas(L) {
       <div class="area-body">
         <h3>${L.common[m]}</h3>
         <p>${text}</p>
-        <span class="area-phone">${icon('phone', 'i i-sm')} ${SITE.phones[m].display}</span>
         <span class="area-go">${icon('arrowUpRight')}</span>
       </div>
     </a>`;
@@ -204,7 +203,7 @@ export function ctaBand(L, market = null) {
     </div>
     <div class="cta-btns">
       <a class="btn btn-dark btn-lg" href="${href(L.lang, 'estimate')}">${L.nav.estimate} ${icon('arrow')}</a>
-      ${callButton(L, market, 'btn btn-outline-dark btn-lg')}
+      ${callButton(L, 'btn btn-outline-dark btn-lg')}
     </div>
   </div>
 </section>`;
