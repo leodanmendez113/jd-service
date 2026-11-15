@@ -21,6 +21,10 @@ Mapa de carpetas: `docs/MAPA.md` (leer antes de explorar).
   (esa clave se llama "temporary"; si deja de funcionar, la publicación sigue andando con jddeploy).
 - Certificado de Let's Encrypt (nombre `jd.66-179-137-11.sslip.io`) cubre sslip.io, `jdfixing.com` y `www.jdfixing.com`;
   se renueva solo (certbot.timer). Copia de la config nginx: `docs/servidor/zz-jd-service.conf`.
+- **fail2ban** bloquea 10 min una IP tras 5 intentos SSH fallidos (también bloquea esta Mac si se falla desde la misma red).
+  La IP de casa de Leo está en la lista de nunca bloquear: `/etc/fail2ban/jail.d/zz-ignore-leo.local` (no poner la IP aquí: el repo es público)
+  (si su proveedor cambia la IP, actualizarla ahí + `sudo fail2ban-client reload`). Desbloquear a mano:
+  `sudo fail2ban-client unban <IP>`. Entrar siempre como `soleildeploy` con clave (no root/ubuntu/admin).
 - Cualquier cambio en nginx: `sudo nginx -t` antes de `sudo systemctl reload nginx`, y comprobar
   learnwithsoleil.com antes y después.
 - **Deshacer todo:** `sudo rm /etc/nginx/sites-enabled/zz-jd-service && sudo nginx -t && sudo systemctl reload nginx`.
